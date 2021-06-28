@@ -6,20 +6,32 @@ let package = Package(
     name: "AcuantiOSSDKV11",
     platforms: [.iOS("11.0")],
     products: [
-        .library(name: "AcuantiOSSDKV11", targets: ["AcuantiOSSDKV11"])
+        .library(name: "AcuantiOSSDKV11", targets: ["AcuantCommon"])
     ],
-//    dependencies: [
-//        .package(url: "https://github.com/pusher/NWWebSocket.git", .upToNextMajor(from: "0.5.2")),
-//        .package(url: "https://github.com/bitmark-inc/tweetnacl-swiftwrap", .upToNextMajor(from: "1.0.0")),
-//    ],
     targets: [
         .target(
-            name: "AcuantiOSSDKV11",
-            dependencies: [
-                "NWWebSocket",
-                "TweetNacl",
-            ],
-            path: "Sources"
+            name: "AcuantCommon",
+            path: "EmbeddedFrameworks/AcuantCommon.xcframework"
+        ),
+        .target(
+            name: "AcuantImagePreparation",
+            path: "EmbeddedFrameworks/AcuantImagePreparation.xcframework"
+        ),
+        .target(
+            name: "AcuantDocumentProcessing",
+            path: "EmbeddedFrameworks/AcuantDocumentProcessing.xcframework"
+        ),
+        .target(
+            name: "AcuantFaceMatch",
+            path: "EmbeddedFrameworks/AcuantFaceMatch.xcframework"
+        ),
+        .target(
+            name: "AcuantPassiveLiveness",
+            path: "EmbeddedFrameworks/AcuantPassiveLiveness.xcframework"
+        ),
+        .target(
+            name: "AcuantFaceCapture",
+            path: "AcuantFaceCapture/AcuantFaceCapture/*.{h,swift}"
         )
     ],
     swiftLanguageVersions: [.v5]
